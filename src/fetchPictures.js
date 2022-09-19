@@ -15,7 +15,7 @@ export default class SearchApiService {
       .then(response => response.json())
       .then(data => {
         this.page += 1;
-
+        // return data
         return data.hits
         // , data.totalHits;
       });
