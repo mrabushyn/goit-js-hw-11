@@ -59,7 +59,7 @@ const renderGallery = function createGalleryItem(hits) {
       }) =>
         `<div class="photo-card">
         <a class="gallery__item" href="${largeImageURL}">
-<img class="gallery__image" src="${webformatURL}" alt="" title="${tags}" width=100 heigth=75/>
+<img class="gallery__image" src="${webformatURL}" alt="" title="${tags}" width=100px height=75/>
 </a>
     <div class="info">
       <p class="info-item">
