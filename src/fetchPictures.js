@@ -9,31 +9,33 @@ export default class SearchApiService {
     this.searchQuery = '';
     this.page = 1;
   }
-  // returnEmptyString() {}
 
   async fetchPictures() {
     const url = `${BACE_URL}/?key=${KEY}&q=${this.searchQuery}
     &image_type=photo&orientation=horizontal
     &safesearch=true&per_page=40&page=${this.page}`;
     try {
-      if (this.searchQuery === '') {
-        loadMoreBtn.hidden = false;
-        Notify.failure(
-          'Please, enter something.'
-        );
-        return;
-      }
       const response = await axios.get(url);
       const data = response.data;
       this.page += 1;
       return data;
+
     } catch (error) {
       Notify.failure(
         'Sorry, there are no images matching your search query. Please try again.'
       );
-      loadMoreBtn.hidden = true;
     }
   }
+
+  resetPage() {
+    this.page = 1;
+  }
+
+  set query(newQuery) {
+    this.searchQuery = newQuery;
+  }
+}
+
 
   // fetchPictures() {
   //   const url = `${BACE_URL}/?key=${KEY}&q=${this.searchQuery}&image_type=photo&orientation=horizontal&safesearch=true&per_page=40&page=${this.page}`;
@@ -46,12 +48,3 @@ export default class SearchApiService {
   //       return data;
   //     });
   // }
-
-  resetPage() {
-    this.page = 1;
-  }
-
-  set query(newQuery) {
-    this.searchQuery = newQuery;
-  }
-}
