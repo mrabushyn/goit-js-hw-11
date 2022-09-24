@@ -21,17 +21,18 @@ refs.loadMoreBtn.addEventListener('click', onLoadMore);
 function onSearchName(event) {
   event.preventDefault();
 
-  searchApiService.query = event.currentTarget.elements.searchQuery.value;
+  searchApiService.query =
+    event.currentTarget.elements.searchQuery.value.trim();
   searchApiService.resetPage();
   searchApiService.fetchPictures().then(({ hits, totalHits }) => {
-    
-    if (totalHits === 0) {
-      Notify.failure(
-        'Sorry, there are no images matching your search query. Please try again.'
-      );
-      hideLoadMoreBtn();
-    } 
-    else Notify.success(`"Hooray! We found ${totalHits} images."`);
+
+      if (totalHits === 0) {
+        Notify.failure(
+          'Sorry, there are no images matching your search query. Please try again.'
+        );
+        hideLoadMoreBtn();
+      } 
+      else Notify.success(`"Hooray! We found ${totalHits} images."`);
     clearGalleryContainer();
     markupGallery(hits);
   });
