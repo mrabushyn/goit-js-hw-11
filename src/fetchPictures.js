@@ -19,7 +19,6 @@ export default class SearchApiService {
       const data = response.data;
       this.page += 1;
       return data;
-
     } catch (error) {
       Notify.failure(
         'Sorry, there are no images matching your search query. Please try again.'
@@ -36,15 +35,14 @@ export default class SearchApiService {
   }
 }
 
+// fetchPictures() {
+//   const url = `${BACE_URL}/?key=${KEY}&q=${this.searchQuery}&image_type=photo&orientation=horizontal&safesearch=true&per_page=40&page=${this.page}`;
 
-  // fetchPictures() {
-  //   const url = `${BACE_URL}/?key=${KEY}&q=${this.searchQuery}&image_type=photo&orientation=horizontal&safesearch=true&per_page=40&page=${this.page}`;
+//   return fetch(url)
+//     .then(response => response.json())
+//     .then(data => {
+//       this.page += 1;
 
-  //   return fetch(url)
-  //     .then(response => response.json())
-  //     .then(data => {
-  //       this.page += 1;
-
-  //       return data;
-  //     });
-  // }
+//       return data;
+//     });
+// }
